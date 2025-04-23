@@ -1,4 +1,5 @@
 {
   "extends": "@tsconfig/node22/tsconfig.json",
-  "includes": ["**/*.ts"]
+  "includes": ["**/*.ts"],
+  "compilerOptions": { "lib": ["dom"] }
 }

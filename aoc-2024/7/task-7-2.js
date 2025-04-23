@@ -9,8 +9,6 @@ function helper(index, x, answer, parameter) {
     return false;
   }
 
-
-
   return (
     helper(
       index + 1,
