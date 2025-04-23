@@ -27,7 +27,7 @@ function helper(index, x, answer, parameter) {
 }
 
 let file_name =
-  "/Users/mikhailrudnev/Desktop/programming/my_repository/aoc-2024/7/task-text-7.txt";
+  "../aoc-2024/7/task-text-7.txt";
 
 let string = fs.readFileSync(file_name).toString();
 
