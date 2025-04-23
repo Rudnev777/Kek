@@ -1,0 +1,28 @@
+version: 2
+updates:
+  # Enable npm dependency updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Limit to 5 open pull requests for npm dependencies
+    open-pull-requests-limit: 5
+    # Set reviewers for npm dependency PRs
+    reviewers:
+      - "owner"
+    # Group all minor and patch updates into single PR
+    groups:
+      minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "major"
+
+  # Enable GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    # Limit to 3 open pull requests for GitHub Actions
+    open-pull-requests-limit: 3
