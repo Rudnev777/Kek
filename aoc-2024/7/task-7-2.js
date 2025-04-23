@@ -26,8 +26,7 @@ function helper(index, x, answer, parameter) {
   );
 }
 
-let file_name =
-  "../aoc-2024/7/task-text-7.txt";
+let file_name = "../aoc-2024/7/task-text-7.txt";
 
 let string = fs.readFileSync(file_name).toString();
 
