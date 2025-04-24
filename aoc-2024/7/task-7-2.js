@@ -26,25 +26,25 @@ function helper(index, x, answer, parameter) {
   );
 }
 
-let file_name = '../aoc-2024/7/task-text-7.txt';
+let fileName = '../aoc-2024/7/task-text-7.txt';
 
-let string = fs.readFileSync(file_name).toString();
+let string = fs.readFileSync(fileName).toString();
 
 let matrix = string.split('\n');
-let string_temporary;
-let bool_result;
+let stringTemporary;
+let boolResult;
 let answer = 0;
 
 for (const element of matrix) {
-  string_temporary = element.split(': ');
-  bool_result = helper(
+  stringTemporary = element.split(': ');
+  boolResult = helper(
     1,
-    Number.parseInt(string_temporary[1].split(' ')[0]),
-    string_temporary[0],
-    string_temporary[1].split(' '),
+    Number.parseInt(stringTemporary[1].split(' ')[0]),
+    stringTemporary[0],
+    stringTemporary[1].split(' '),
   );
-  if (bool_result) {
-    answer += Number.parseInt(string_temporary[0]);
+  if (boolResult) {
+    answer += Number.parseInt(stringTemporary[0]);
   }
 }
 
