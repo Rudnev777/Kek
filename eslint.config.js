@@ -1,13 +1,41 @@
-// @ts-check
-
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import globals from "globals";
+import 'eslint-plugin-only-warn';
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import globals from 'globals';
+import gitignore from 'eslint-config-flat-gitignore';
+import sonarjs from 'eslint-plugin-sonarjs';
 
 export default tseslint.config(
-  eslint.configs.recommended,
-  tseslint.configs.strictTypeChecked,
+  gitignore(),
+  {
+    extends: [eslint.configs.recommended],
+    rules: {
+      curly: ['error', 'all'],
+    },
+  },
+  {
+    extends: [
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+    ],
+    rules: {
+      '@typescript-eslint/no-unnecessary-condition': [
+        'error',
+        {
+          allowConstantLoopConditions: true,
+          checkTypePredicates: true,
+        },
+      ],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowNumber: true,
+        },
+      ],
+    },
+  },
   {
     languageOptions: {
       globals: {
@@ -23,44 +51,50 @@ export default tseslint.config(
   {
     extends: [eslintPluginUnicorn.configs.all],
     rules: {
-      "unicorn/no-null": "off",
+      'unicorn/no-null': 'off',
     },
   },
   {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    extends: [sonarjs.configs.recommended],
+    rules: {
+      'sonarjs/cognitive-complexity': ['error', 50],
+    },
+  },
+  {
+    files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
     extends: [tseslint.configs.disableTypeChecked],
   },
   {
     rules: {
-      "@typescript-eslint/naming-convention": [
-        "error",
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
-          selector: "default",
-          format: ["camelCase"],
+          selector: 'default',
+          format: ['camelCase'],
         },
         {
-          selector: "objectLiteralProperty",
+          selector: 'objectLiteralProperty',
           format: null,
         },
         {
-          selector: "variable",
-          format: ["camelCase", "UPPER_CASE"],
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE'],
         },
         {
-          selector: "parameter",
-          format: ["camelCase"],
-          leadingUnderscore: "allow",
+          selector: 'parameter',
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
         },
         {
-          selector: "memberLike",
-          modifiers: ["private"],
-          format: ["camelCase"],
-          leadingUnderscore: "require",
+          selector: 'memberLike',
+          modifiers: ['private'],
+          format: ['camelCase'],
+          leadingUnderscore: 'require',
         },
 
         {
-          selector: "typeLike",
-          format: ["PascalCase"],
+          selector: 'typeLike',
+          format: ['PascalCase'],
         },
       ],
     },
