@@ -26,8 +26,7 @@ function helper(index, x, answer, parameter) {
   );
 }
 
-
-const fileName = import.meta.dirname + "/task-text-7.txt";
+const fileName = import.meta.dirname + '/task-text-7.txt';
 
 let string = fs.readFileSync(fileName).toString();
 
