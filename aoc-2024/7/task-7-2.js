@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 function helper(index, x, answer, parameter) {
   if (parameter.length == index) {
@@ -26,7 +27,7 @@ function helper(index, x, answer, parameter) {
   );
 }
 
-const fileName = import.meta.dirname + '/task-text-7.txt';
+const fileName = path.resolve(import.meta.dirname, 'task-text-7.txt');
 
 let string = fs.readFileSync(fileName).toString();
 
