@@ -12,6 +12,7 @@ export default tseslint.config(
     extends: [eslint.configs.recommended],
     rules: {
       curly: ['error', 'all'],
+      eqeqeq: ['error', 'always'],
     },
   },
   {

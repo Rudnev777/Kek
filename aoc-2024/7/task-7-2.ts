@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-function helper(index, x, answer, parameter) {
-  if (parameter.length == index) {
-    return x == answer;
+function helper(index : number, x : number, answer : number, parameter : string[]) : boolean {
+  if (parameter.length === index) {
+    return x === answer;
   }
 
   if (x > answer) {
@@ -29,11 +29,11 @@ function helper(index, x, answer, parameter) {
 
 const fileName = path.resolve(import.meta.dirname, 'task-text-7.txt');
 
-let string = fs.readFileSync(fileName).toString();
+const string = fs.readFileSync(fileName).toString();
 
-let matrix = string.split('\n');
-let stringTemporary;
-let boolResult;
+const matrix = string.split('\n');
+let stringTemporary : string[];
+let boolResult : boolean;
 let answer = 0;
 
 for (const element of matrix) {
@@ -41,7 +41,7 @@ for (const element of matrix) {
   boolResult = helper(
     1,
     Number.parseInt(stringTemporary[1].split(' ')[0]),
-    stringTemporary[0],
+    Number.parseInt(stringTemporary[0]),
     stringTemporary[1].split(' '),
   );
   if (boolResult) {
