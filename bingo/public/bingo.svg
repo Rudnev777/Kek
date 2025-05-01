@@ -1,0 +1,12 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="20" fill="#FFD700"/>
+  <circle cx="30" cy="30" r="15" fill="#FF4C4C" stroke="#000" stroke-width="2"/>
+  <text x="23" y="37" font-family="Arial" font-size="18" font-weight="bold" fill="#fff">B</text>
+  
+  <!-- Bingo grid -->
+  <rect x="50" y="20" width="30" height="30" fill="#fff" stroke="#000" stroke-width="1"/>
+  <line x1="60" y1="20" x2="60" y2="50" stroke="#000" stroke-width="1"/>
+  <line x1="70" y1="20" x2="70" y2="50" stroke="#000" stroke-width="1"/>
+  <line x1="50" y1="30" x2="80" y2="30" stroke="#000" stroke-width="1"/>
+  <line x1="50" y1="40" x2="80" y2="40" stroke="#000" stroke-width="1"/>
+</svg>
