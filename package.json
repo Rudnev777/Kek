@@ -8,6 +8,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "bingo:build": "vite build -c bingo/vite.config.js",
+    "bingo:dev": "vite -c bingo/vite.config.js",
+    "bingo:preview": "vite preview -c bingo/vite.config.js",
     "check-types": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -29,6 +32,7 @@
     "prettier": "3.5.3",
     "prettier-plugin-packagejson": "^2.5.10",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.1"
+    "typescript-eslint": "^8.31.1",
+    "vite": "npm:rolldown-vite@latest"
   }
 }
