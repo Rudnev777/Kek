@@ -1,3 +1,6 @@
+/* eslint-disable unicorn/prefer-query-selector */
+/* eslint-disable unicorn/no-array-for-each */
+/* eslint-disable unicorn/no-keyword-prefix */
 import './style.css';
 
 const column = 5;
@@ -5,11 +8,11 @@ const row = 9;
 
 const section = document.getElementById('grid');
 if (section) {
-  for (let i = 0; i < row; i++) {
-    for (let j = 0; j < column; j++) {
+  for (let index = 0; index < row; index++) {
+    for (let indexTwo = 0; indexTwo < column; indexTwo++) {
       const button = document.createElement('button');
       button.className = 'button-playing-grid';
-      button.textContent = `${i} - ${j}`;
+      button.textContent = `${index} - ${indexTwo}`;
       section.append(button);
     }
   }
@@ -19,7 +22,7 @@ if (section) {
 
 const arrayButton = document.querySelectorAll('.button-playing-grid');
 
-arrayButton.forEach(element => {
+arrayButton.forEach((element) => {
   element.addEventListener('click', function (this: HTMLElement) {
     this.style.backgroundColor = 'red';
   });

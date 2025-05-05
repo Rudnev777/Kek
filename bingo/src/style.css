@@ -1,9 +1,9 @@
-.button-playing-grid{
-    background-color: white;
+.button-playing-grid {
+  background-color: white;
 }
 
-.button-grid{
-    display: grid;
-    height: 500px;
-    width: 500px;
+.button-grid {
+  display: grid;
+  height: 500px;
+  width: 500px;
 }
