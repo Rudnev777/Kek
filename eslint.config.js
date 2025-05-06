@@ -15,6 +15,7 @@ export default tseslint.config(
       eqeqeq: ['error', 'always'],
     },
   },
+
   {
     extends: [
       tseslint.configs.strictTypeChecked,
@@ -53,6 +54,7 @@ export default tseslint.config(
     extends: [eslintPluginUnicorn.configs.all],
     rules: {
       'unicorn/no-null': 'off',
+      'unicorn/no-keyword-prefix': 'off',
     },
   },
   {
