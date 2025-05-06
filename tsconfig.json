@@ -4,5 +4,5 @@
     "@tsconfig/node-ts/tsconfig.json"
   ],
   "includes": ["**/*.ts"],
-  "compilerOptions": { "lib": ["dom"] }
+  "compilerOptions": { "lib": ["dom", "DOM.Iterable"] }
 }
