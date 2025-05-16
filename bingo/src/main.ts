@@ -1,7 +1,7 @@
 import './style.css';
 
-const column = 4;
-const row = 3;
+const column = 3;
+const row = 4;
 const arrayPhrase = [
   'Понял понял',
   '...',
@@ -18,8 +18,8 @@ const arrayPhrase = [
 ];
 
 function shuffle(array: unknown[]): void {
-  for (let index = 0; index < array.length; index++) {
-    const indexRandom = Math.floor(Math.random() * array.length);
+  for (let index = array.length - 1; index > 0; index--) {
+    const indexRandom = Math.floor(Math.random() * (index + 1));
 
     [array[index], array[indexRandom]] = [array[indexRandom], array[index]];
   }
@@ -36,9 +36,9 @@ if (section) {
     const arrayTemporary = new Array<HTMLElement>();
     for (let indexColumn = 0; indexColumn < column; indexColumn++) {
       const button = document.createElement('button');
-      button.className = 'button-playing-grid';
+      button.className = 'button-playing-grid button-white';
       button.textContent = arrayPhrase[indexPhrase++];
-      button.style.backgroundColor = 'white';
+
       section.append(button);
       arrayTemporary.push(button);
     }
@@ -48,49 +48,52 @@ if (section) {
   section.style.gridTemplateColumns = `repeat(${column}, 1fr)`;
 }
 
-const arrayButton = document.querySelectorAll<HTMLElement>(
-  '.button-playing-grid',
-);
-const arrayColor = ['white', 'green', 'yellow', 'orange', 'red'];
+const arrayColor = [
+  'button-white',
+  'button-green',
+  'button-yellow',
+  'button-orange',
+  'button-red',
+];
 let alertFinish = true;
+for (const elementArray of matrix) {
+  for (const element of elementArray) {
+    const buttonObject = {
+      buttonClick: 0,
+    };
 
-for (const element of arrayButton) {
-  const buttonObject = {
-    button: element,
-    buttonClick: 0,
-    buttonColor: function (color: string): void {
-      this.button.style.backgroundColor = color;
-    },
-  };
-  buttonObject.button.addEventListener('click', () => {
-    buttonObject.buttonColor(arrayColor[++buttonObject.buttonClick]);
-    if (hasCompleteRowOrColumn(matrix) && alertFinish) {
-      alert('!!!BINGO!!!');
-      alertFinish = false;
-    }
-  });
+    element.addEventListener('click', () => {
+      if (buttonObject.buttonClick < 4) {
+        element.classList.toggle(arrayColor[buttonObject.buttonClick]);
+        element.classList.toggle(arrayColor[++buttonObject.buttonClick]);
+      }
+      if (hasCompleteRowOrColumn(matrix) && alertFinish) {
+        alert('!!!BINGO!!!');
+        alertFinish = false;
+      }
+    });
+  }
 }
-
 function hasCompleteRowOrColumn(matrix: HTMLElement[][]): boolean {
-  let bool = false;
-
   for (const elementArray of matrix) {
-    bool = elementArray.every(
-      (element) => element.style.backgroundColor !== 'white',
-    );
-    if (bool) {
-      return bool;
+    if (
+      elementArray.every(
+        (element) => !element.classList.contains('button-white'),
+      )
+    ) {
+      return true;
     }
   }
 
   for (let index = 0; index < matrix[0].length; index++) {
-    bool = matrix.every(
-      (element) => element[index].style.backgroundColor !== 'white',
-    );
-    if (bool) {
-      return bool;
+    if (
+      matrix.every(
+        (element) => !element[index].classList.contains('button-white'),
+      )
+    ) {
+      return true;
     }
   }
 
-  return bool;
+  return false;
 }
