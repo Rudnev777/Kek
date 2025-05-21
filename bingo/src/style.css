@@ -1,22 +1,13 @@
+:root {
+  --button-color: #ffffff;
+}
+
 .button-grid {
   display: grid;
   height: 500px;
   width: 500px;
 }
 
-
-.button-white{
-background-color: white;
-} 
-.button-green{
-background-color:green;
+.button-play {
+  background-color: var(--button-color);
 }
- .button-yellow{
-  background-color:yellow;
- } 
- .button-orange{
-  background-color:orange;
- } 
- .button-red{
-  background-color:red;
- }
