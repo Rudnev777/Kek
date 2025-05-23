@@ -35,48 +35,57 @@ type BingoCell = {
   buttonClick: number;
 };
 
-const matrix: BingoCell[][] = [];
-const arrayColor = ['green', 'yellow', 'orange', 'red'];
-let alertFinish = true;
+const cells: BingoCell[][] = [];
+const buttonPlayBingoColor = ['green', 'yellow', 'orange', 'red'];
+let alertWin = true;
+const stopColorChange = 4;
 
 if (section) {
   for (let indexRow = 0; indexRow < row; indexRow++) {
     const arrayTemporary = new Array<BingoCell>();
     for (let indexColumn = 0; indexColumn < column; indexColumn++) {
-      const buttonTemporary = document.createElement('button');
-      buttonTemporary.className = 'button-playing-grid button-play';
-      buttonTemporary.textContent = arrayPhrase[indexPhrase++];
+      const buttonCell: BingoCell = {
+        button: document.createElement('button'),
+        buttonClick: 0,
+      };
 
-      section.append(buttonTemporary);
-      arrayTemporary.push({ button: buttonTemporary, buttonClick: 0 });
-      arrayTemporary[indexColumn].button.addEventListener('click', () => {
-        if (arrayTemporary[indexColumn].buttonClick < 4) {
-          arrayTemporary[indexColumn].button.style.setProperty(
+      buttonCell.button.className = 'button-cell';
+      buttonCell.button.textContent = arrayPhrase[indexPhrase++];
+      section.append(buttonCell.button);
+      arrayTemporary.push(buttonCell);
+
+      buttonCell.button.addEventListener('click', () => {
+        if (buttonCell.buttonClick < stopColorChange) {
+          buttonCell.button.style.setProperty(
             '--button-color',
-            arrayColor[arrayTemporary[indexColumn].buttonClick++],
+            buttonPlayBingoColor[buttonCell.buttonClick++],
           );
         }
-        if (hasCompleteRowOrColumn(matrix) && alertFinish) {
+        if (alertWin && hasCompleteRowOrColumn(cells)) {
           alert('!!!BINGO!!!');
-          alertFinish = false;
+          alertWin = false;
         }
       });
     }
-    matrix.push(arrayTemporary);
+    cells.push(arrayTemporary);
   }
-  section.style.gridTemplateRows = `repeat(${row}, 1fr)`;
-  section.style.gridTemplateColumns = `repeat(${column}, 1fr)`;
+
+  section.style.setProperty('--cells-bingo-play-rows', `repeat(${row}, 1fr)`);
+  section.style.setProperty(
+    '--cells-bingo-play-columns',
+    `repeat(${column}, 1fr)`,
+  );
 }
 
-function hasCompleteRowOrColumn(matrix: BingoCell[][]): boolean {
-  for (const elementArray of matrix) {
+function hasCompleteRowOrColumn(cells: BingoCell[][]): boolean {
+  for (const elementArray of cells) {
     if (elementArray.every((element) => element.buttonClick !== 0)) {
       return true;
     }
   }
 
-  for (let index = 0; index < matrix[0].length; index++) {
-    if (matrix.every((element) => element[index].buttonClick !== 0)) {
+  for (let index = 0; index < cells[0].length; index++) {
+    if (cells.every((element) => element[index].buttonClick !== 0)) {
       return true;
     }
   }

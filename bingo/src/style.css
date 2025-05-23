@@ -1,13 +1,18 @@
 :root {
   --button-color: #ffffff;
+
+   --cells-bingo-play-rows: repeat(1, 1fr);
+  --cells-bingo-play-columns : repeat(1, 1fr);
 }
 
 .button-grid {
   display: grid;
+  grid-template-columns: var(--cells-bingo-play-columns);
+  grid-template-rows: var(--cells-bingo-play-rows);
   height: 500px;
   width: 500px;
 }
 
-.button-play {
+.button-cell {
   background-color: var(--button-color);
 }
