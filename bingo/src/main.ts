@@ -2,19 +2,23 @@ import './style.css';
 
 const column = 3;
 const row = 4;
-const arrayPhrase = [
-  'Понял понял',
-  '...',
-  'Спасибо',
-  'Почему так',
-  'Во',
-  'Как',
-  'Споки',
-  'ААА',
-  'Не понимаю',
-  'Затупил',
-  'Подскажи',
-  'Не знаю',
+type phraseClue = {
+  phrase: string;
+  clue: string;
+};
+const arrayPhrase: phraseClue[] = [
+  { phrase: 'Понял понял', clue: '' },
+  { phrase: '...', clue: 'Тупит' },
+  { phrase: 'Спасибо', clue: '' },
+  { phrase: 'Почему так', clue: '' },
+  { phrase: 'Во', clue: 'Надежда на похвалу' },
+  { phrase: 'Как', clue: '' },
+  { phrase: 'Споки', clue: '' },
+  { phrase: 'ААА', clue: 'Понимание что не прав' },
+  { phrase: 'Не понимаю', clue: '' },
+  { phrase: 'Затупил', clue: '' },
+  { phrase: 'Подскажи', clue: '' },
+  { phrase: 'Не знаю', clue: '' },
 ];
 
 function shuffle(array: unknown[]): void {
@@ -49,8 +53,25 @@ if (section) {
         buttonClick: 0,
       };
 
-      buttonCell.button.className = 'button-cell';
-      buttonCell.button.textContent = arrayPhrase[indexPhrase++];
+      const originalText = arrayPhrase[indexPhrase].phrase;
+      const textClue = arrayPhrase[indexPhrase].clue;
+      buttonCell.button.textContent = arrayPhrase[indexPhrase++].phrase;
+
+      if (arrayPhrase[indexPhrase - 1].clue === '') {
+        buttonCell.button.className = 'button-cell';
+      } else {
+       
+        buttonCell.button.className = 'button-cell button-cell-clue';
+       buttonCell.button.addEventListener('mouseenter', () => {
+          buttonCell.button.textContent = textClue;
+        });
+
+        buttonCell.button.addEventListener('mouseleave', () => {
+          buttonCell.button.textContent  = originalText;
+        });
+      }
+      
+
       section.append(buttonCell.button);
       arrayTemporary.push(buttonCell);
 
