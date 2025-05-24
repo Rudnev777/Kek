@@ -1,18 +1,79 @@
 :root {
   --button-color: #ffffff;
+  --body-color: linear-gradient(
+    90deg,
+    rgba(75, 24, 133, 1) 0%,
+    rgba(3, 3, 64, 1) 100%
+  );
+  --cells-color: linear-gradient(
+    90deg,
+    rgba(255, 252, 252, 1) 0%,
+    rgba(253, 255, 230, 1) 100%
+  );
 
-   --cells-bingo-play-rows: repeat(1, 1fr);
-  --cells-bingo-play-columns : repeat(1, 1fr);
+  --cells-bingo-play-rows: repeat(1, 1fr);
+  --cells-bingo-play-columns: repeat(1, 1fr);
+}
+body {
+  background: var(--body-color);
+  padding: 10%;
+  display: grid;
+  justify-content: center;
+  gap: 10%;
 }
 
+.bingo-data-time {
+  display: grid;
+  justify-content: center;
+
+  background: var(--cells-color);
+
+  border-color: #000000;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 2%;
+}
 .button-grid {
+  background: var(--cells-color);
+
+  padding: 3%;
+
+  border-color: #000000;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 2%;
+
   display: grid;
   grid-template-columns: var(--cells-bingo-play-columns);
   grid-template-rows: var(--cells-bingo-play-rows);
+  gap: 3%;
+
   height: 500px;
   width: 500px;
 }
 
 .button-cell {
   background-color: var(--button-color);
+
+  border-color: #000000;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5%;
+}
+
+
+.button-cell-clue{
+  color :blueviolet;
+   position: relative;
+}
+
+.button-cell-clue::after {
+  content: '▪️';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+ 
+}
+.button-cell:hover {
+  transform: scale(1.02);
 }
