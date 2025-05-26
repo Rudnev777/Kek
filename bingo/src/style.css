@@ -13,13 +13,21 @@
 
   --cells-bingo-play-rows: repeat(1, 1fr);
   --cells-bingo-play-columns: repeat(1, 1fr);
+
+  --text-clue : '--------';
+}
+
+* {
+  padding: 0;
+  margin: 0;
 }
 body {
   background: var(--body-color);
-  padding: 10%;
-  display: grid;
-  justify-content: center;
-  gap: 10%;
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
 .bingo-data-time {
@@ -52,6 +60,13 @@ body {
   width: 500px;
 }
 
+.copy-button{
+  height: 100px;
+  width: 100px;
+
+  border-radius: 5%;
+}
+
 .button-cell {
   background-color: var(--button-color);
 
@@ -61,18 +76,46 @@ body {
   border-radius: 5%;
 }
 
-
 .button-cell-clue{
-  color :blueviolet;
    position: relative;
 }
-
 .button-cell-clue::after {
-  content: '▪️';
+  content: '';
+
   position: absolute;
-  top: 2px;
-  right: 2px;
+
+  width: 7px;
+  height: 7px;
+  top: 4px;
+  right: 4px;;
+
+  background-color: #000000;
+  
+  border-radius: 50%;
  
+}
+
+
+.button-cell-clue:hover::before{
+  content:  var(--text-clue, '???');
+
+  background-color: #ffffff;
+
+  border-color: #000000;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5%;
+
+  position: absolute;
+
+  bottom: 100%;
+  left: 80%;
+  
+
+  min-width: 30px;
+    min-height: 20px;
+    white-space: nowrap;
+    padding: 2px 5px;
 }
 .button-cell:hover {
   transform: scale(1.02);
