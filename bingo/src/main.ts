@@ -69,7 +69,7 @@ function bingoPlay() {
           buttonClick: 0,
         };
 
-        const originalText = arrayPhrase[indexPhrase].phrase;
+        const originalText = arrayPhrase[indexPhrase].phrase; 
         const textClue = arrayPhrase[indexPhrase].clue;
         buttonCell.button.textContent = arrayPhrase[indexPhrase++].phrase;
 
