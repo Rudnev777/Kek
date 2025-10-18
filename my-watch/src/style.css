@@ -1,0 +1,60 @@
+:root {
+  --size-watch: 60px;
+}
+
+.clock-from-clock{
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.time-number{
+  display: flex;
+  flex-direction: row;
+}
+
+.number-from-clock{
+  height: calc(var(--size-watch) * 6);
+  width: calc(var(--size-watch) * 4);
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+
+  
+}
+
+.watch {
+  background-color:aliceblue;
+  height: var(--size-watch);
+  width: var(--size-watch);
+  border-radius: 50%;
+  
+}
+
+.arrow-hour {
+  background-color: black;
+  height: 40%;
+  width: 2%;
+  position: relative;
+  left: 50%;
+  bottom: 40%;
+
+  transform-origin: 50% 100%; /* bottom;*/
+  transform: rotate(225deg);
+  transition: transform 0.25s ease-in-out ;
+
+
+}
+
+.arrow-minute {
+  background-color: black;
+  height: 50%;
+  width: 2%;
+  position: relative;
+  left: 50%;
+
+   transform-origin: 50% 100%; /* bottom;*/
+  transform: rotate(225deg);
+  transition: transform 0.25s ease-in-out;
+
+  
+}
