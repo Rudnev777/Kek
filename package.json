@@ -35,10 +35,10 @@
     "eslint-plugin-unicorn": "59.0.1",
     "globals": "16.5.0",
     "prettier": "3.8.0",
-    "prettier-plugin-packagejson": "2.5.21",
+    "prettier-plugin-packagejson": "2.5.22",
     "simple-git-hooks": "2.13.1",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.53.0",
+    "typescript-eslint": "8.53.1",
     "vite": "6.3.5"
   }
 }
